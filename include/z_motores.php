@@ -84,9 +84,10 @@ function OperarDivisa_InferenciaSimple($MonedaOperar)
 						$SaldoDisponibleSoporte=ObtenerSaldoTrading("$DivisaDeSoporte","DISPONIBLE");
 						// ********************************************************************** */
 						Separador("-",$AnchoConsola);
+
 						echo "\n\r MIO SaldoDisponible: $SaldoDisponible";
 						echo "\n\r MIO SaldoDisponibleSoporte: $SaldoDisponibleSoporte";
-						echo "\n\r";
+
 						ColorTextoConsola();
 						//Opera solamente cuando hay saldos disponibles para comprar y para vender asi garantizo que compro a un precio bajo pero lo vendo a uno mas alto al mismo tiempo (o cuando la orden de venta sea llenada)
 						if ($SaldoDisponible > $SaldoMinimoTrading && $SaldoDisponibleSoporte > $SaldoMinimoSoporte)

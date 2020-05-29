@@ -108,16 +108,19 @@ function ObtenerSaldoTrading($CriptoMoneda,$TipoSaldo="DISPONIBLE")
 	{
 		global $APIKEY_Trader,$APISECRET_Trader;
 		$client = new \Hitbtc\ProtectedClient($APIKEY_Trader, $APISECRET_Trader, $demo = false);
-		
+
+		//echo "\n\r APIKEY_Trader: $APIKEY_Trader";
+		//echo "\n\r APISECRET_Trader: $APISECRET_Trader";
+
 		try {
 			foreach ($client->getBalanceTrading() as $balance) {
 				// Verifica si el $balance->getCurrency() que se esta recorriendo es la moneda deseada para obtener el saldo
 				if ($balance->getCurrency() == $CriptoMoneda)
 					{
-						if ($TipoSaldo=="DISPONIBLE")
+						if ($TipoSaldo=="DISPONIBLE")							
 							return $balance->getAvailable();
 						if ($TipoSaldo=="RESERVADO")
-							return $balance->getReserved();						
+							return $balance->getReserved();			
 					}
 			}
 		} catch (\Hitbtc\Exception\InvalidRequestException $e) {
